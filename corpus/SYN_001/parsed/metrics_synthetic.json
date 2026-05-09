@@ -1,0 +1,57 @@
+{
+  "tender_id": "SYN_001",
+  "universe_size": 26,
+  "counts": {
+    "bct_flagged": 19,
+    "lexicon_flagged": 13,
+    "stage3_confirmed": 3
+  },
+  "agreement": {
+    "bct_vs_lexicon": {
+      "name_a": "bct_pipeline",
+      "name_b": "lexicon_baseline",
+      "both": 9,
+      "only_a": 9,
+      "only_b": 2,
+      "neither": 6,
+      "cohen_kappa": 0.2011
+    }
+  },
+  "ground_truth_size": 13,
+  "bct_pipeline": {
+    "precision_recall": {
+      "tp": 11,
+      "fp": 7,
+      "fn": 2,
+      "tn": 6,
+      "precision": 0.6111,
+      "recall": 0.8462,
+      "f1": 0.7097,
+      "accuracy": 0.6538
+    }
+  },
+  "bct_confirmed": {
+    "precision_recall": {
+      "tp": 3,
+      "fp": 0,
+      "fn": 10,
+      "tn": 13,
+      "precision": 1.0,
+      "recall": 0.2308,
+      "f1": 0.375,
+      "accuracy": 0.6154
+    }
+  },
+  "lexicon_baseline": {
+    "precision_recall": {
+      "tp": 11,
+      "fp": 0,
+      "fn": 2,
+      "tn": 13,
+      "precision": 1.0,
+      "recall": 0.8462,
+      "f1": 0.9167,
+      "accuracy": 0.9231
+    }
+  }
+}

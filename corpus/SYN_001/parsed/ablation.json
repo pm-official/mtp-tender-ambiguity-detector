@@ -1,0 +1,62 @@
+[
+  {
+    "rung": "A0_no_filter",
+    "predicted_positive": 26,
+    "tp": 13,
+    "fp": 13,
+    "fn": 0,
+    "tn": 0,
+    "precision": 0.5,
+    "recall": 1.0,
+    "f1": 0.6667,
+    "accuracy": 0.5
+  },
+  {
+    "rung": "A1_lexicon",
+    "predicted_positive": 11,
+    "tp": 11,
+    "fp": 0,
+    "fn": 2,
+    "tn": 13,
+    "precision": 1.0,
+    "recall": 0.8462,
+    "f1": 0.9167,
+    "accuracy": 0.9231
+  },
+  {
+    "rung": "A2_bct_stage1",
+    "predicted_positive": 18,
+    "tp": 11,
+    "fp": 7,
+    "fn": 2,
+    "tn": 6,
+    "precision": 0.6111,
+    "recall": 0.8462,
+    "f1": 0.7097,
+    "accuracy": 0.6538
+  },
+  {
+    "rung": "A3_bct_plus_stage2",
+    "predicted_positive": 11,
+    "tp": 7,
+    "fp": 4,
+    "fn": 6,
+    "tn": 9,
+    "precision": 0.6364,
+    "recall": 0.5385,
+    "f1": 0.5833,
+    "accuracy": 0.6154
+  },
+  {
+    "rung": "A4_bct_plus_stage3",
+    "predicted_positive": 3,
+    "tp": 3,
+    "fp": 0,
+    "fn": 10,
+    "tn": 13,
+    "precision": 1.0,
+    "recall": 0.2308,
+    "f1": 0.375,
+    "accuracy": 0.6154
+  }
+]

@@ -1,0 +1,99 @@
+# ─── Secrets ───────────────────────────────────────────────────────────────
+.env
+*.env.local
+*.key
+*.pem
+credentials/
+# Vertex AI service-account JSON keys — NEVER commit these
+gcp-vertex-sa.json
+gcp-vertex-sa-*.json
+*-service-account.json
+*-sa.json
+
+# ─── Python ─────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ─── Virtual environments ──────────────────────────────────────────────────
+.env/
+.venv/
+venv/
+ENV/
+env/
+
+# ─── Caches ─────────────────────────────────────────────────────────────────
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# ─── Project data ──────────────────────────────────────────────────────────
+# Exclude every tender by default. SYN_001 (the synthetic demo) is committed
+# explicitly so newcomers see the pipeline output without running anything.
+corpus/*
+!corpus/SYN_001/
+!corpus/.gitkeep
+
+# Inside SYN_001, exclude the run-by-run audit JSONs (large, regenerable),
+# the local LLM pipeline log, and the cache, but keep parsed artefacts +
+# the rendered report so reviewers can read the headline output.
+corpus/SYN_001/runs/
+corpus/SYN_001/*.log
+
+# Top-level reports/audit dirs (legacy)
+reports/**
+!reports/.gitkeep
+audit/**
+!audit/.gitkeep
+
+# Pipeline log files (top level)
+*_pipeline.log
+
+# ChromaDB local stores
+**/chroma_db/
+**/.chroma/
+
+# Silver-label sets (may include tender-identifying text)
+silver_labels.jsonl
+**/silver_labels.jsonl
+
+# IS-code corpus PDFs (stored locally, not redistributed)
+resources/iscode/**/*.pdf
+
+# ─── IDE / editor ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Misc ───────────────────────────────────────────────────────────────────
+*.log
+*.tmp
+.coverage
+htmlcov/

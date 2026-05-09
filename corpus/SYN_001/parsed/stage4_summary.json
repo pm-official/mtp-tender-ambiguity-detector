@@ -1,0 +1,20 @@
+{
+  "tender_id": "SYN_001",
+  "ran_at": "2026-05-09T12:04:54.054351+00:00",
+  "candidates_total": 3,
+  "rewrites_attempted": 3,
+  "status_counts": {
+    "ACCEPTED": 3,
+    "REJECTED": 0,
+    "PASSED_GUARDRAILS_FAILED": 0,
+    "RETRY_LIMIT_REACHED": 0,
+    "ERROR": 0
+  },
+  "guardrails_passed": {
+    "citation_integrity": 3,
+    "reflag_check": 3,
+    "intent_preservation": 3
+  },
+  "total_cost_inr": 0.754,
+  "out_path": "C:\\Users\\Hp\\Downloads\\Claude Projects\\MTP Stage 2 Work\\tender-ambiguity-detector\\corpus\\SYN_001\\parsed\\stage4_rewrites.jsonl"
+}

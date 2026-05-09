@@ -1,0 +1,453 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "kind": "clause",
+      "doc_id": "01_nit.pdf",
+      "clause_number": "",
+      "section": "(unsectioned)",
+      "id": "01_nit.pdf::00000"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "01_nit.pdf",
+      "clause_number": "1.1",
+      "section": "(unsectioned)",
+      "id": "01_nit.pdf::00001"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "01_nit.pdf",
+      "clause_number": "1.2",
+      "section": "(unsectioned)",
+      "id": "01_nit.pdf::00002"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "01_nit.pdf",
+      "clause_number": "1.3",
+      "section": "(unsectioned)",
+      "id": "01_nit.pdf::00003"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "01_nit.pdf",
+      "clause_number": "1.4",
+      "section": "(unsectioned)",
+      "id": "01_nit.pdf::00004"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "01_nit.pdf",
+      "clause_number": "1.5",
+      "section": "(unsectioned)",
+      "id": "01_nit.pdf::00005"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "02_gcc.pdf",
+      "clause_number": "",
+      "section": "(unsectioned)",
+      "id": "02_gcc.pdf::00000"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "02_gcc.pdf",
+      "clause_number": "4.1",
+      "section": "(unsectioned)",
+      "id": "02_gcc.pdf::00001"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "02_gcc.pdf",
+      "clause_number": "4.2",
+      "section": "(unsectioned)",
+      "id": "02_gcc.pdf::00002"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "02_gcc.pdf",
+      "clause_number": "4.3",
+      "section": "(unsectioned)",
+      "id": "02_gcc.pdf::00003"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "02_gcc.pdf",
+      "clause_number": "4.4",
+      "section": "(unsectioned)",
+      "id": "02_gcc.pdf::00004"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "02_gcc.pdf",
+      "clause_number": "4.5",
+      "section": "(unsectioned)",
+      "id": "02_gcc.pdf::00005"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "02_gcc.pdf",
+      "clause_number": "4.6",
+      "section": "(unsectioned)",
+      "id": "02_gcc.pdf::00006"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "02_gcc.pdf",
+      "clause_number": "4.7",
+      "section": "(unsectioned)",
+      "id": "02_gcc.pdf::00007"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "03_scc.pdf",
+      "clause_number": "",
+      "section": "(unsectioned)",
+      "id": "03_scc.pdf::00000"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "03_scc.pdf",
+      "clause_number": "5.1",
+      "section": "(unsectioned)",
+      "id": "03_scc.pdf::00001"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "03_scc.pdf",
+      "clause_number": "5.2",
+      "section": "(unsectioned)",
+      "id": "03_scc.pdf::00002"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "03_scc.pdf",
+      "clause_number": "5.3",
+      "section": "(unsectioned)",
+      "id": "03_scc.pdf::00003"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "03_scc.pdf",
+      "clause_number": "5.4",
+      "section": "(unsectioned)",
+      "id": "03_scc.pdf::00004"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "03_scc.pdf",
+      "clause_number": "5.5",
+      "section": "(unsectioned)",
+      "id": "03_scc.pdf::00005"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "03_scc.pdf",
+      "clause_number": "5.6",
+      "section": "(unsectioned)",
+      "id": "03_scc.pdf::00006"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "03_scc.pdf",
+      "clause_number": "5.7",
+      "section": "(unsectioned)",
+      "id": "03_scc.pdf::00007"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "04_specs.pdf",
+      "clause_number": "",
+      "section": "(unsectioned)",
+      "id": "04_specs.pdf::00000"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "04_specs.pdf",
+      "clause_number": "6.1",
+      "section": "(unsectioned)",
+      "id": "04_specs.pdf::00001"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "04_specs.pdf",
+      "clause_number": "6.2",
+      "section": "(unsectioned)",
+      "id": "04_specs.pdf::00002"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "04_specs.pdf",
+      "clause_number": "6.3",
+      "section": "(unsectioned)",
+      "id": "04_specs.pdf::00003"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "04_specs.pdf",
+      "clause_number": "6.4",
+      "section": "(unsectioned)",
+      "id": "04_specs.pdf::00004"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "04_specs.pdf",
+      "clause_number": "6.5",
+      "section": "(unsectioned)",
+      "id": "04_specs.pdf::00005"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "04_specs.pdf",
+      "clause_number": "6.6",
+      "section": "(unsectioned)",
+      "id": "04_specs.pdf::00006"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "04_specs.pdf",
+      "clause_number": "6.7",
+      "section": "(unsectioned)",
+      "id": "04_specs.pdf::00007"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "05_boq.pdf",
+      "clause_number": "",
+      "section": "(unsectioned)",
+      "id": "05_boq.pdf::00000"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "corrigendum_001.pdf",
+      "clause_number": "",
+      "section": "(unsectioned)",
+      "id": "corrigendum_001.pdf::00000"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "corrigendum_001.pdf",
+      "clause_number": "1.",
+      "section": "(unsectioned)",
+      "id": "corrigendum_001.pdf::00001"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "corrigendum_002.pdf",
+      "clause_number": "",
+      "section": "(unsectioned)",
+      "id": "corrigendum_002.pdf::00000"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "corrigendum_002.pdf",
+      "clause_number": "1.",
+      "section": "(unsectioned)",
+      "id": "corrigendum_002.pdf::00001"
+    },
+    {
+      "kind": "clause",
+      "doc_id": "corrigendum_002.pdf",
+      "clause_number": "2.",
+      "section": "(unsectioned)",
+      "id": "corrigendum_002.pdf::00002"
+    },
+    {
+      "kind": "standard",
+      "external": true,
+      "label": "MoRTH 5.0",
+      "id": "external::standard::MoRTH 5.0"
+    },
+    {
+      "kind": "section",
+      "external": true,
+      "label": "Section 9",
+      "id": "external::section::Section 9"
+    },
+    {
+      "kind": "standard",
+      "external": true,
+      "label": "IS 456:2000",
+      "id": "external::standard::IS 456:2000"
+    },
+    {
+      "kind": "standard",
+      "external": true,
+      "label": "IS 269:2015",
+      "id": "external::standard::IS 269:2015"
+    },
+    {
+      "kind": "standard",
+      "external": true,
+      "label": "IS 383:2016",
+      "id": "external::standard::IS 383:2016"
+    },
+    {
+      "kind": "drawing",
+      "external": true,
+      "label": "Drawing s",
+      "id": "external::drawing::Drawing s"
+    },
+    {
+      "kind": "standard",
+      "external": true,
+      "label": "IS 1786:2008",
+      "id": "external::standard::IS 1786:2008"
+    },
+    {
+      "kind": "standard",
+      "external": true,
+      "label": "IS 2720 Part 7",
+      "id": "external::standard::IS 2720 Part 7"
+    },
+    {
+      "kind": "section",
+      "external": true,
+      "label": "Section 509",
+      "id": "external::section::Section 509"
+    },
+    {
+      "kind": "standard",
+      "external": true,
+      "label": "MoRTH",
+      "id": "external::standard::MoRTH"
+    },
+    {
+      "kind": "clause",
+      "external": true,
+      "label": "Clause 5.5",
+      "id": "external::clause::Clause 5.5"
+    },
+    {
+      "kind": "clause",
+      "external": true,
+      "label": "Clause 5.3",
+      "id": "external::clause::Clause 5.3"
+    },
+    {
+      "kind": "standard",
+      "external": true,
+      "label": "IS 9989",
+      "id": "external::standard::IS 9989"
+    },
+    {
+      "kind": "annex",
+      "external": true,
+      "label": "Annex C",
+      "id": "external::annex::Annex C"
+    },
+    {
+      "kind": "clause",
+      "external": true,
+      "label": "Clause 4.2",
+      "id": "external::clause::Clause 4.2"
+    }
+  ],
+  "edges": [
+    {
+      "kind": "standard",
+      "label": "MoRTH 5.0",
+      "source": "01_nit.pdf::00001",
+      "target": "external::standard::MoRTH 5.0"
+    },
+    {
+      "kind": "clause",
+      "label": "Clause 4.6",
+      "source": "02_gcc.pdf::00001",
+      "target": "02_gcc.pdf::00006"
+    },
+    {
+      "kind": "section",
+      "label": "Section 9",
+      "source": "04_specs.pdf::00001",
+      "target": "external::section::Section 9"
+    },
+    {
+      "kind": "standard",
+      "label": "IS 456:2000",
+      "source": "04_specs.pdf::00001",
+      "target": "external::standard::IS 456:2000"
+    },
+    {
+      "kind": "standard",
+      "label": "IS 269:2015",
+      "source": "04_specs.pdf::00001",
+      "target": "external::standard::IS 269:2015"
+    },
+    {
+      "kind": "standard",
+      "label": "IS 383:2016",
+      "source": "04_specs.pdf::00001",
+      "target": "external::standard::IS 383:2016"
+    },
+    {
+      "kind": "drawing",
+      "label": "Drawing s",
+      "source": "04_specs.pdf::00002",
+      "target": "external::drawing::Drawing s"
+    },
+    {
+      "kind": "standard",
+      "label": "IS 1786:2008",
+      "source": "04_specs.pdf::00002",
+      "target": "external::standard::IS 1786:2008"
+    },
+    {
+      "kind": "standard",
+      "label": "IS 2720 Part 7",
+      "source": "04_specs.pdf::00003",
+      "target": "external::standard::IS 2720 Part 7"
+    },
+    {
+      "kind": "section",
+      "label": "Section 509",
+      "source": "04_specs.pdf::00004",
+      "target": "external::section::Section 509"
+    },
+    {
+      "kind": "standard",
+      "label": "MoRTH",
+      "source": "04_specs.pdf::00004",
+      "target": "external::standard::MoRTH"
+    },
+    {
+      "kind": "clause",
+      "label": "Clause 5.5",
+      "source": "05_boq.pdf::00000",
+      "target": "external::clause::Clause 5.5"
+    },
+    {
+      "kind": "clause",
+      "label": "Clause 5.3",
+      "source": "corrigendum_001.pdf::00001",
+      "target": "external::clause::Clause 5.3"
+    },
+    {
+      "kind": "standard",
+      "label": "IS 9989",
+      "source": "corrigendum_001.pdf::00001",
+      "target": "external::standard::IS 9989"
+    },
+    {
+      "kind": "clause",
+      "label": "Clause 5.5",
+      "source": "corrigendum_002.pdf::00001",
+      "target": "external::clause::Clause 5.5"
+    },
+    {
+      "kind": "annex",
+      "label": "Annex C",
+      "source": "corrigendum_002.pdf::00001",
+      "target": "external::annex::Annex C"
+    },
+    {
+      "kind": "clause",
+      "label": "Clause 4.2",
+      "source": "corrigendum_002.pdf::00002",
+      "target": "external::clause::Clause 4.2"
+    }
+  ]
+}

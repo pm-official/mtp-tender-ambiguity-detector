@@ -1,0 +1,79 @@
+[project]
+name = "tender-ambiguity-detector"
+version = "0.1.0"
+description = "Vagueness detection in Indian construction tender documents using the Bidder Commitment Test (BCT). M.Tech thesis project at IIT Bombay Civil Engineering."
+authors = [
+    { name = "Prakhar", email = "sanjukharat90@gmail.com" }
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+
+dependencies = [
+    # LLM / structured output
+    "google-genai>=1.0.0",          # New unified Gemini SDK with native Pydantic structured-output
+    "google-generativeai>=0.8.0",   # Older SDK kept as fallback (text-embedding-004 access)
+    "pydantic>=2.6",
+    "tenacity>=8.2",
+
+    # Document processing
+    "pymupdf>=1.24",                # PDF parsing
+    "pytesseract>=0.3.10",          # OCR fallback
+    "rapidfuzz>=3.6",               # fuzzy alignment for corrigendum diff
+    "regex>=2024.4",
+
+    # Vector store and embeddings
+    "chromadb>=0.5.0",
+    "scikit-learn>=1.5",            # for cosine, classical baselines, calibration
+
+    # Data
+    "pandas>=2.2",
+    "pyyaml>=6.0",
+    "networkx>=3.3",                # in-memory reference graph
+
+    # Web / scraping
+    "requests>=2.32",
+    "beautifulsoup4>=4.12",
+    "selenium>=4.20",               # CPPP scraping (manual CAPTCHA step)
+
+    # UI
+    "streamlit>=1.35",
+    "jinja2>=3.1",                  # HTML report rendering
+    "python-docx>=1.1",             # Word report rendering
+
+    # Utilities
+    "python-dotenv>=1.0",
+    "rich>=13.7",                   # nicer CLI output during dev
+    "scipy>=1.13",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"]

@@ -1,0 +1,16 @@
+{
+  "tender_id": "SYN_001",
+  "clauses_loaded": 36,
+  "definitions_extracted": 2,
+  "quantities_extracted": 28,
+  "references_extracted": 17,
+  "references_resolved_internal": 1,
+  "graph_nodes": 51,
+  "graph_edges": 17,
+  "index_collection": "tender_SYN_001",
+  "index_total_clauses": 36,
+  "index_newly_embedded": 36,
+  "index_skipped": 0,
+  "index_cost_usd": 0.000201,
+  "index_cost_inr": 0.0168
+}

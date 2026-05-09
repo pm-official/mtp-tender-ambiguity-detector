@@ -1,0 +1,13 @@
+{
+  "tender_id": "SYN_001",
+  "ran_at": "2026-05-09T05:48:00.501827+00:00",
+  "candidate_flags_total": 36,
+  "candidate_flags_flagged": 19,
+  "stage2_calls": 19,
+  "stage2_failures": 0,
+  "verdict_real": 11,
+  "verdict_apparent": 8,
+  "verdict_weak": 0,
+  "total_cost_inr": 0.0,
+  "out_path": "C:\\Users\\Hp\\Downloads\\Claude Projects\\MTP Stage 2 Work\\tender-ambiguity-detector\\corpus\\SYN_001\\parsed\\stage2_verdicts.jsonl"
+}

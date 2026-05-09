@@ -1,0 +1,16 @@
+{
+  "tender_id": "SYN_001",
+  "ran_at": "2026-05-09T05:00:07.512889+00:00",
+  "clauses_loaded": 36,
+  "skipped_tables": 0,
+  "skipped_tiny": 0,
+  "eligible": 36,
+  "obligation_filter_skipped": 15,
+  "bct_calls": 20,
+  "bct_failures": 1,
+  "flagged": 19,
+  "not_flagged": 1,
+  "non_obligation_records": 15,
+  "total_cost_inr": 0.1221,
+  "out_path": "C:\\Users\\Hp\\Downloads\\Claude Projects\\MTP Stage 2 Work\\tender-ambiguity-detector\\corpus\\SYN_001\\parsed\\candidate_flags.jsonl"
+}

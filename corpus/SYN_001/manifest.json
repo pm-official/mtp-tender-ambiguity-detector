@@ -1,0 +1,85 @@
+{
+  "tender_id": "SYN_001",
+  "source_url": "(synthetic — generated locally for pipeline development)",
+  "issuing_authority": "Synthetic Demo Authority (for development only)",
+  "project_title": "Synthetic 4-lane access road, demo tender",
+  "issue_date": "2026-01-28",
+  "award_date": null,
+  "project_value_inr_lakhs": 25000.0,
+  "documents": [
+    {
+      "filename": "01_nit.pdf",
+      "role": "nit",
+      "sequence": 0,
+      "page_count": 1,
+      "file_size_bytes": 3899,
+      "sha256": "83f6332896ac0a02947221100d9fa3c3ce27e3dbf0bb228c55a184108bb9a5fa",
+      "issuance_date": null,
+      "notes": ""
+    },
+    {
+      "filename": "02_gcc.pdf",
+      "role": "gcc",
+      "sequence": 0,
+      "page_count": 1,
+      "file_size_bytes": 5766,
+      "sha256": "1f73b2a7e0388a93f37f52a50290cb4f5b26a09a4ecdc509369df6848b8e7150",
+      "issuance_date": null,
+      "notes": ""
+    },
+    {
+      "filename": "03_scc.pdf",
+      "role": "scc",
+      "sequence": 0,
+      "page_count": 1,
+      "file_size_bytes": 5505,
+      "sha256": "f34eb553785e95484dc2bcac418e0fd56ee09b3275f8d17df37d144cea97d495",
+      "issuance_date": null,
+      "notes": ""
+    },
+    {
+      "filename": "04_specs.pdf",
+      "role": "specs",
+      "sequence": 0,
+      "page_count": 1,
+      "file_size_bytes": 5889,
+      "sha256": "8f9f76c1dcbc424c70ae9f5ac52c67de7ef919c21fc8fd65f7398ed64b1491a6",
+      "issuance_date": null,
+      "notes": ""
+    },
+    {
+      "filename": "05_boq.pdf",
+      "role": "boq",
+      "sequence": 0,
+      "page_count": 1,
+      "file_size_bytes": 5551,
+      "sha256": "91d0d2feff3105521e3d2c13d8b31a25ffb14a56dc3978a36d92ddb8f1b91eb0",
+      "issuance_date": null,
+      "notes": ""
+    },
+    {
+      "filename": "corrigendum_001.pdf",
+      "role": "corrigendum",
+      "sequence": 1,
+      "page_count": 1,
+      "file_size_bytes": 4515,
+      "sha256": "073b3e33dbfb915f98970787d3ab0440572b6bd37b91eace3d44a8bd8045c5f0",
+      "issuance_date": "2026-02-12",
+      "notes": ""
+    },
+    {
+      "filename": "corrigendum_002.pdf",
+      "role": "corrigendum",
+      "sequence": 2,
+      "page_count": 1,
+      "file_size_bytes": 4252,
+      "sha256": "1624bb2b3a6cbbdb51ef6f1e53b2fe7edc41717e1c1d958a31ab4385b60366c4",
+      "issuance_date": "2026-02-24",
+      "notes": ""
+    }
+  ],
+  "retrieved_at": "2026-05-08T18:15:48.868231+00:00",
+  "retrieved_by": "generate_synthetic_tender",
+  "notes": "Synthetic tender for development. NOT a real CPPP tender. Includes deliberately vague clauses and two corrigenda that resolve them, suitable for end-to-end pipeline testing.",
+  "schema_version": "1.0"
+}

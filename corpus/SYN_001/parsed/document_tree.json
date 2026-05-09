@@ -1,0 +1,152 @@
+{
+  "tender_id": "SYN_001",
+  "parsed_at": "2026-05-08T19:15:22.674514+00:00",
+  "documents": [
+    {
+      "doc_id": "01_nit.pdf",
+      "tender_id": "SYN_001",
+      "page_count": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "char_count": 824,
+          "block_count": 8,
+          "has_text_layer": true,
+          "ocr_was_used": false,
+          "width_points": 595.0,
+          "height_points": 842.0
+        }
+      ],
+      "clause_count": 6,
+      "table_clause_count": 0,
+      "ocr_pages": [],
+      "notes": ""
+    },
+    {
+      "doc_id": "02_gcc.pdf",
+      "tender_id": "SYN_001",
+      "page_count": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "char_count": 1421,
+          "block_count": 9,
+          "has_text_layer": true,
+          "ocr_was_used": false,
+          "width_points": 595.0,
+          "height_points": 842.0
+        }
+      ],
+      "clause_count": 8,
+      "table_clause_count": 0,
+      "ocr_pages": [],
+      "notes": ""
+    },
+    {
+      "doc_id": "03_scc.pdf",
+      "tender_id": "SYN_001",
+      "page_count": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "char_count": 1285,
+          "block_count": 9,
+          "has_text_layer": true,
+          "ocr_was_used": false,
+          "width_points": 595.0,
+          "height_points": 842.0
+        }
+      ],
+      "clause_count": 8,
+      "table_clause_count": 0,
+      "ocr_pages": [],
+      "notes": ""
+    },
+    {
+      "doc_id": "04_specs.pdf",
+      "tender_id": "SYN_001",
+      "page_count": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "char_count": 1375,
+          "block_count": 9,
+          "has_text_layer": true,
+          "ocr_was_used": false,
+          "width_points": 595.0,
+          "height_points": 842.0
+        }
+      ],
+      "clause_count": 8,
+      "table_clause_count": 0,
+      "ocr_pages": [],
+      "notes": ""
+    },
+    {
+      "doc_id": "05_boq.pdf",
+      "tender_id": "SYN_001",
+      "page_count": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "char_count": 1308,
+          "block_count": 10,
+          "has_text_layer": true,
+          "ocr_was_used": false,
+          "width_points": 595.0,
+          "height_points": 842.0
+        }
+      ],
+      "clause_count": 1,
+      "table_clause_count": 0,
+      "ocr_pages": [],
+      "notes": ""
+    },
+    {
+      "doc_id": "corrigendum_001.pdf",
+      "tender_id": "SYN_001",
+      "page_count": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "char_count": 955,
+          "block_count": 7,
+          "has_text_layer": true,
+          "ocr_was_used": false,
+          "width_points": 595.0,
+          "height_points": 842.0
+        }
+      ],
+      "clause_count": 2,
+      "table_clause_count": 0,
+      "ocr_pages": [],
+      "notes": ""
+    },
+    {
+      "doc_id": "corrigendum_002.pdf",
+      "tender_id": "SYN_001",
+      "page_count": 1,
+      "pages": [
+        {
+          "page_number": 1,
+          "char_count": 884,
+          "block_count": 9,
+          "has_text_layer": true,
+          "ocr_was_used": false,
+          "width_points": 595.0,
+          "height_points": 842.0
+        }
+      ],
+      "clause_count": 3,
+      "table_clause_count": 0,
+      "ocr_pages": [],
+      "notes": ""
+    }
+  ],
+  "summary": {
+    "total_clauses": 36,
+    "table_clauses": 0,
+    "ocr_pages_total": 0,
+    "documents_parsed": 7
+  }
+}

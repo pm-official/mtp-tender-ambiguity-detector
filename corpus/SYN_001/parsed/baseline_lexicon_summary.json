@@ -1,0 +1,16 @@
+{
+  "tender_id": "SYN_001",
+  "method": "lexicon_baseline",
+  "clauses_total": 36,
+  "clauses_flagged": 13,
+  "flag_rate": 0.3611,
+  "category_counts": {
+    "subjectivity": 10,
+    "delegated_authority": 2,
+    "effort_pledges": 1,
+    "feasibility_dodge": 3
+  },
+  "min_markers": 1,
+  "lexicon_size": 37,
+  "out_path": "corpus\\SYN_001\\parsed\\baseline_lexicon.jsonl"
+}

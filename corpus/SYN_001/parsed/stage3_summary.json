@@ -1,0 +1,21 @@
+{
+  "tender_id": "SYN_001",
+  "ran_at": "2026-05-09T05:51:22.892009+00:00",
+  "total_records": 19,
+  "stage2_real_input": 11,
+  "critique_calls": 11,
+  "critique_failures": 0,
+  "critique_confirmed": 3,
+  "critique_rejected": 8,
+  "critique_weak": 0,
+  "critique_rejection_rate": 0.727,
+  "severity_calls": 3,
+  "severity_failures": 0,
+  "severity_distribution": {
+    "high": 3,
+    "medium": 0,
+    "low": 0
+  },
+  "total_cost_inr": 2.4778,
+  "out_path": "C:\\Users\\Hp\\Downloads\\Claude Projects\\MTP Stage 2 Work\\tender-ambiguity-detector\\corpus\\SYN_001\\parsed\\stage3_confirmed.jsonl"
+}

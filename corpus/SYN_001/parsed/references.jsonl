@@ -1,0 +1,17 @@
+{"from_clause":"01_nit.pdf::00001","target_kind":"standard","target_label":"MoRTH 5.0","target_id":null,"raw_text":"MoRTH 5.0","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"02_gcc.pdf::00001","target_kind":"clause","target_label":"Clause 4.6","target_id":"02_gcc.pdf::00006","raw_text":"Sub-Clause 4.6","confidence":0.9,"resolved":true,"notes":""}
+{"from_clause":"04_specs.pdf::00001","target_kind":"section","target_label":"Section 9","target_id":null,"raw_text":"Section 9","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"04_specs.pdf::00001","target_kind":"standard","target_label":"IS 456:2000","target_id":null,"raw_text":"IS 456:2000","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"04_specs.pdf::00001","target_kind":"standard","target_label":"IS 269:2015","target_id":null,"raw_text":"IS 269:2015","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"04_specs.pdf::00001","target_kind":"standard","target_label":"IS 383:2016","target_id":null,"raw_text":"IS 383:2016","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"04_specs.pdf::00002","target_kind":"drawing","target_label":"Drawing s","target_id":null,"raw_text":"drawings","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"04_specs.pdf::00002","target_kind":"standard","target_label":"IS 1786:2008","target_id":null,"raw_text":"IS 1786:2008","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"04_specs.pdf::00003","target_kind":"standard","target_label":"IS 2720 Part 7","target_id":null,"raw_text":"IS 2720 Part 7","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"04_specs.pdf::00004","target_kind":"section","target_label":"Section 509","target_id":null,"raw_text":"Section\n509","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"04_specs.pdf::00004","target_kind":"standard","target_label":"MoRTH","target_id":null,"raw_text":"MoRTH","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"05_boq.pdf::00000","target_kind":"clause","target_label":"Clause 5.5","target_id":null,"raw_text":"Clause 5.5","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"corrigendum_001.pdf::00001","target_kind":"clause","target_label":"Clause 5.3","target_id":null,"raw_text":"Clause 5.3","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"corrigendum_001.pdf::00001","target_kind":"standard","target_label":"IS 9989","target_id":null,"raw_text":"IS 9989","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"corrigendum_002.pdf::00001","target_kind":"clause","target_label":"Clause 5.5","target_id":null,"raw_text":"Clause 5.5","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"corrigendum_002.pdf::00001","target_kind":"annex","target_label":"Annex C","target_id":null,"raw_text":"Annex C","confidence":0.9,"resolved":false,"notes":""}
+{"from_clause":"corrigendum_002.pdf::00002","target_kind":"clause","target_label":"Clause 4.2","target_id":null,"raw_text":"Clause 4.2","confidence":0.9,"resolved":false,"notes":""}
