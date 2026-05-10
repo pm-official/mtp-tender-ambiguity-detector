@@ -9,6 +9,8 @@ gcp-vertex-sa.json
 gcp-vertex-sa-*.json
 *-service-account.json
 *-sa.json
+# Streamlit Cloud secrets — NEVER commit; use the dashboard Secrets section
+.streamlit/secrets.toml
 
 # ─── Python ─────────────────────────────────────────────────────────────────
 __pycache__/
