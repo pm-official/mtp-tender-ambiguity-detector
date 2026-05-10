@@ -68,9 +68,44 @@ def explain(label: str, body: str, *, expanded: bool = False) -> None:
 # ─── Cached resources ──────────────────────────────────────────────────────
 @st.cache_resource
 def get_gemini_client():
-    """Process-wide GeminiClient. Cached so we don't re-init on every rerun."""
-    from src.llm.gemini_client import get_default_client
-    return get_default_client()
+    """Process-wide LLM client with multi-key + Groq fallback. Cached so we
+    don't re-init on every rerun."""
+    from src.llm.fallback import get_fallback_client
+    return get_fallback_client()
+
+
+@st.cache_resource(show_spinner="Building IS-code index (one-time, ~2 min, ~₹15)...")
+def ensure_iscode_index() -> bool:
+    """On first run, build the IS-code chroma index from the PDFs shipped in
+    resources/iscode/. Subsequent runs reuse the cached index. This means
+    the deployed app needs no external download for IS-code citations to
+    verify in Stage 4 G1.
+
+    Returns True if the index is ready to use, False if not.
+    """
+    from src.iscode.index import index_summary, build_iscode_index, _resources_dir
+
+    summ = index_summary()
+    if summ.get("exists") and (summ.get("chunks") or 0) > 100:
+        return True
+
+    # Index missing or sparse — build it.
+    pdfs_dir = _resources_dir()
+    if not pdfs_dir.exists() or not list(pdfs_dir.glob("*.pdf")):
+        logger.warning("No IS-code PDFs in %s; Stage 4 G1 will be unavailable.", pdfs_dir)
+        return False
+
+    try:
+        result = build_iscode_index()
+        logger.info(
+            "Built IS-code index: %d PDFs, %d chunks, %d newly embedded, ~₹%.2f.",
+            result.pdfs_seen, result.chunks_total,
+            result.newly_embedded, result.cost_inr,
+        )
+        return result.chunks_total > 0
+    except Exception as e:
+        logger.warning("IS-code index build failed: %s", e)
+        return False
 
 
 @st.cache_data
@@ -436,6 +471,15 @@ def run_live_pipeline(
 
         # ─── Stage 4: Rewrite ───────────────────────────────────────────
         st.write("**Stage 4 — IS-code-grounded rewrite** (Pro + 3 guardrails)")
+        # Ensure the IS-code index exists. On Streamlit Cloud cold start,
+        # this will trigger a one-time build from the bundled IS-code PDFs.
+        index_ready = ensure_iscode_index()
+        if not index_ready:
+            st.warning(
+                "IS-code index unavailable — Stage 4 will run without G1 "
+                "citation verification (rewrites are still generated and "
+                "checked by G2/G3, just no IS-code-corpus crosscheck)."
+            )
         from src.rewrite.pipeline import run_stage4
         try:
             s4_summ = run_stage4(

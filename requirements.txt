@@ -11,6 +11,7 @@
 google-genai>=1.0.0
 pydantic>=2.6
 tenacity>=8.2
+groq>=0.13.0    # Fallback LLM provider when Gemini quota exhausts
 
 # Document processing
 pymupdf>=1.24

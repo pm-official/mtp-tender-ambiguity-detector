@@ -79,8 +79,11 @@ audit/**
 silver_labels.jsonl
 **/silver_labels.jsonl
 
-# IS-code corpus PDFs (stored locally, not redistributed)
-resources/iscode/**/*.pdf
+# IS-code corpus PDFs — committed so the deployed app can build its own
+# vector index on cold start without an external download. These are
+# public-authority publications used here for academic purposes only.
+# (To exclude from your fork, uncomment the line below.)
+# resources/iscode/**/*.pdf
 
 # ─── IDE / editor ──────────────────────────────────────────────────────────
 .vscode/

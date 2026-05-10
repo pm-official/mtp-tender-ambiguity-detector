@@ -584,8 +584,29 @@ class GeminiClient:
 _default_client: GeminiClient | None = None
 
 
-def get_default_client() -> GeminiClient:
-    """Return a process-wide shared GeminiClient (lazy-initialised)."""
+def get_default_client():
+    """Return the process-wide shared LLM client.
+
+    If `GROQ_API_KEY` or `GEMINI_API_KEY_OLD` is set, returns a
+    `FallbackLLMClient` that transparently fails over from the primary
+    Gemini key to Groq (LLM only) to a second Gemini key on quota errors.
+    Otherwise returns a plain `GeminiClient`.
+
+    The wrapper has the same `.generate(...)`, `.embed(...)`, and
+    `.default_*` API surface as `GeminiClient` so call sites don't need
+    to change.
+    """
+    has_fallback = bool(
+        os.environ.get("GROQ_API_KEY") or os.environ.get("GEMINI_API_KEY_OLD")
+    )
+    if has_fallback:
+        try:
+            from src.llm.fallback import get_fallback_client
+            return get_fallback_client()
+        except Exception as e:
+            logger.warning(
+                "Fallback client init failed; falling back to plain Gemini: %s", e
+            )
     global _default_client
     if _default_client is None:
         _default_client = GeminiClient()
