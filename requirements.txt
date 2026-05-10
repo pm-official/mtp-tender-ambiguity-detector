@@ -1,0 +1,27 @@
+# Runtime dependencies for the Streamlit Cloud deployment.
+#
+# This file is intentionally a strict subset of pyproject.toml — we exclude
+# scraping (selenium) and OCR (pytesseract) tooling which need system
+# binaries Streamlit Cloud doesn't have, and we exclude dev-only tools
+# (pytest, ruff, mypy). The app.py runtime path imports only what's below.
+#
+# When running locally, prefer `pip install -e ".[dev]"` for the full setup.
+
+# LLM / structured output
+google-genai>=1.0.0
+pydantic>=2.6
+tenacity>=8.2
+
+# Document processing
+pymupdf>=1.24
+regex>=2024.4
+
+# Vector store and embeddings
+chromadb>=0.5.0
+
+# UI
+streamlit>=1.35
+
+# Utilities
+python-dotenv>=1.0
+pyyaml>=6.0
