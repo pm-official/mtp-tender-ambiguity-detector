@@ -101,31 +101,96 @@ def _strip_obvious_header_footer_lines(text: str) -> str:
 
 # ─── OCR (optional) ─────────────────────────────────────────────────────────
 def _ocr_page(page) -> Optional[str]:
-    """Render the page to an image and OCR it with Tesseract.
+    """Render the page to an image and extract text via OCR.
 
-    Returns the OCR text, or None if Tesseract is unavailable / fails.
+    Tries in order:
+      1. Local Tesseract via pytesseract (fast, offline, free)
+      2. Gemini Flash Vision API (slower, costs ~₹0.10 per page, but works
+         on Streamlit Cloud and other environments without system deps)
+
+    Returns the extracted text, or None if both routes fail.
     """
+    # ── Route 1: Tesseract ───────────────────────────────────────────────
+    tess_text = _ocr_via_tesseract(page)
+    if tess_text and tess_text.strip():
+        return tess_text
+
+    # ── Route 2: Gemini Vision fallback ──────────────────────────────────
+    gem_text = _ocr_via_gemini(page)
+    if gem_text and gem_text.strip():
+        return gem_text
+
+    return None
+
+
+def _ocr_via_tesseract(page) -> Optional[str]:
+    """Local Tesseract OCR. Returns None if unavailable."""
     try:
         import pytesseract
         from PIL import Image
     except ImportError:
-        logger.debug("OCR libraries not installed; skipping OCR for this page.")
         return None
 
     try:
-        # Render at 200 DPI for adequate OCR accuracy
         pix = page.get_pixmap(dpi=200, alpha=False)
         img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
-        text = pytesseract.image_to_string(img, lang="eng")
-        return text
+        return pytesseract.image_to_string(img, lang="eng")
     except pytesseract.TesseractNotFoundError:
-        logger.warning(
-            "Tesseract binary not found on PATH. Install from "
-            "https://github.com/UB-Mannheim/tesseract/wiki to enable OCR."
+        logger.info(
+            "Tesseract binary not on PATH; falling back to Gemini Vision OCR. "
+            "Install Tesseract for faster + free OCR."
         )
         return None
     except Exception as e:
-        logger.warning("OCR failed for page %d: %s", page.number + 1, e)
+        logger.warning("Tesseract OCR failed for page %d: %s", page.number + 1, e)
+        return None
+
+
+def _ocr_via_gemini(page) -> Optional[str]:
+    """Render the page to a JPEG and extract text with Gemini Flash Vision.
+
+    Cost is roughly ~₹0.10 per page (Flash on a ~1MB image). Used only as a
+    fallback when Tesseract is unavailable, so a typical run on a text-PDF
+    tender pays nothing here.
+    """
+    try:
+        # Render at 150 DPI — high enough for clean OCR, small enough to
+        # keep the upload payload reasonable.
+        pix = page.get_pixmap(dpi=150, alpha=False)
+        jpeg_bytes = pix.tobytes(output="jpeg", jpg_quality=85)
+    except Exception as e:
+        logger.warning("Page-render to JPEG failed for page %d: %s", page.number + 1, e)
+        return None
+
+    try:
+        from google import genai
+        from google.genai import types as gtypes
+
+        from src.llm.gemini_client import get_default_client
+        client = get_default_client()
+        model = client.default_flash
+
+        resp = client._client.models.generate_content(
+            model=model,
+            contents=[
+                gtypes.Part.from_bytes(data=jpeg_bytes, mime_type="image/jpeg"),
+                "Extract all text from this PDF page exactly as it appears, "
+                "preserving line breaks and clause numbering. Do not "
+                "paraphrase or summarise. If the page has no text, "
+                "respond with the empty string.",
+            ],
+        )
+        text = (resp.text or "").strip()
+        if text:
+            logger.info(
+                "Gemini Vision OCR'd page %d (%d chars).",
+                page.number + 1, len(text),
+            )
+        return text or None
+    except Exception as e:
+        logger.warning(
+            "Gemini Vision OCR failed for page %d: %s", page.number + 1, e
+        )
         return None
 
 

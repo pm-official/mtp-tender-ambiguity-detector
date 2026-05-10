@@ -299,6 +299,37 @@ def run_live_pipeline(
         f.seek(0)
         (tender_dir / f.name).write_bytes(f.read())
 
+    # Create the manifest.json the parser expects. We auto-infer document
+    # roles from filenames; user uploads don't have to match the curated
+    # SYN_001 naming convention so most files end up tagged "other", which
+    # is fine for the parser.
+    from src.acquire.manifest import (
+        TenderDocument, empty_manifest, infer_role_from_filename,
+        infer_corrigendum_sequence, sha256_of_file, write_manifest,
+    )
+    m = empty_manifest(run_id)
+    for f in uploaded_files:
+        fname = f.name
+        fpath = tender_dir / fname
+        role = infer_role_from_filename(fname)
+        seq = infer_corrigendum_sequence(fname) if role == "corrigendum" else 0
+        try:
+            import fitz
+            doc = fitz.open(str(fpath))
+            page_count = len(doc)
+            doc.close()
+        except Exception:
+            page_count = 0
+        m.documents.append(TenderDocument(
+            filename=fname,
+            role=role,
+            sequence=seq,
+            page_count=page_count,
+            file_size_bytes=fpath.stat().st_size,
+            sha256=sha256_of_file(fpath),
+        ))
+    write_manifest(tender_dir, m)
+
     summary = {
         "tender_id": run_id,
         "doc_id": selected_doc,
@@ -350,10 +381,10 @@ def run_live_pipeline(
         try:
             extract_all(
                 tender_dir,
-                build_index=True,
-                build_definitions=False,  # Skip — adds API cost without clear demo value
-                build_quantities=False,
-                build_references=False,
+                do_index=True,
+                do_definitions=False,    # Skip — adds API cost without clear demo value
+                do_quantities=False,
+                do_references=False,
                 classify_referents_with_llm=False,
                 llm_definitions_fallback=False,
             )
@@ -369,7 +400,7 @@ def run_live_pipeline(
         # ─── Stage 1: BCT ────────────────────────────────────────────────
         st.write(f"**Stage 1 — Bidder Commitment Test** (Flash on {len(clauses_in_scope)} clauses)")
         from src.score.pipeline import run_stage1
-        s1_summ = run_stage1(tender_dir, score_max=None, score_skip_filter=False)
+        s1_summ = run_stage1(tender_dir, max_clauses=None, skip_obligation_filter=False)
         flagged_total = s1_summ.get("flagged", 0)
         st.write(f"Stage 1 done: **{s1_summ.get('eligible', 0)}** clauses scored, "
                  f"**{flagged_total}** with `CANNOT_DETERMINE`. "
@@ -381,7 +412,7 @@ def run_live_pipeline(
         # ─── Stage 2: Hybrid critic ─────────────────────────────────────
         st.write("**Stage 2 — REAL vs APPARENT critic** (Flash + retrieval)")
         from src.critic.pipeline import run_stage2
-        s2_summ = run_stage2(tender_dir, critique_max=None, critique_top_k=8)
+        s2_summ = run_stage2(tender_dir, max_flags=None, top_k_fused=8)
         real_count = s2_summ.get("verdict_real", 0)
         st.write(f"Stage 2 done: "
                  f"**{real_count} REAL**, "
@@ -392,7 +423,7 @@ def run_live_pipeline(
         # ─── Stage 3: Critique + severity ───────────────────────────────
         st.write("**Stage 3 — critique + severity** (Pro)")
         from src.critic.stage3_pipeline import run_stage3
-        s3_summ = run_stage3(tender_dir, confirm_max=None, confirm_skip_severity=False)
+        s3_summ = run_stage3(tender_dir, max_real_flags=None, skip_severity=False)
         confirmed_count = s3_summ.get("critique_confirmed", 0)
         sev_dist = s3_summ.get("severity_distribution") or {}
         st.write(f"Stage 3 done: "
@@ -409,8 +440,8 @@ def run_live_pipeline(
         try:
             s4_summ = run_stage4(
                 tender_dir,
-                rewrite_max=None,
-                rewrite_only_severity="high",
+                max_flags=None,
+                only_severity="high",
             )
             st.write(f"Stage 4 done: "
                      f"**{s4_summ.get('status_counts', {}).get('ACCEPTED', 0)} ACCEPTED**, "
