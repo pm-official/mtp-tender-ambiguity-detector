@@ -59,9 +59,28 @@ dev = [
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools.packages.find]
-where = ["."]
-include = ["src*"]
+# Tell setuptools that the importable Python package is `src` and all its
+# sub-packages. We list them explicitly (rather than using `find`) so that
+# uv / Poetry / pip on Streamlit Cloud cannot misinterpret the layout and
+# fall back to looking for a `tender_ambiguity_detector/` directory based
+# on the project name.
+[tool.setuptools]
+packages = [
+    "src",
+    "src.acquire",
+    "src.audit",
+    "src.critic",
+    "src.eval",
+    "src.extract",
+    "src.iscode",
+    "src.llm",
+    "src.parse",
+    "src.report",
+    "src.retrieve",
+    "src.rewrite",
+    "src.schemas",
+    "src.score",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
