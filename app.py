@@ -382,19 +382,57 @@ def run_live_pipeline(
         from src.parse.pipeline import parse_tender
         parse_summary = parse_tender(tender_dir)
         clauses = _read_jsonl(parsed_dir / "clauses.jsonl")
+
+        # Permissive doc-id matching: case-insensitive, basename only, with
+        # leading/trailing whitespace stripped. This is robust to differences
+        # between how Streamlit reports the upload name (`f.name`) and how
+        # the parser may have normalised it on disk.
+        sel_norm = (selected_doc or "").strip().lower()
+        def _doc_match(c) -> bool:
+            cid = (c.get("doc_id") or "").strip().lower()
+            return cid == sel_norm or Path(cid).name == Path(sel_norm).name
+
+        clauses_for_doc = [c for c in clauses if _doc_match(c)]
         clauses_in_scope = [
-            c for c in clauses
-            if c.get("doc_id") == selected_doc
-            and page_start <= c.get("page", 1) <= page_end
+            c for c in clauses_for_doc
+            if page_start <= c.get("page", 1) <= page_end
         ]
-        st.write(f"Parsed {len(clauses)} clauses across {len(uploaded_files)} document(s). "
-                 f"**{len(clauses_in_scope)}** clauses fall in {selected_doc} "
-                 f"pages {page_start}–{page_end} — these are scored next.")
+        st.write(
+            f"Parsed **{len(clauses)}** clauses across "
+            f"**{len(uploaded_files)}** document(s). "
+            f"For `{selected_doc}` specifically: **{len(clauses_for_doc)}** clauses "
+            f"on pages {sorted({c.get('page', 0) for c in clauses_for_doc})}. "
+            f"**{len(clauses_in_scope)}** of those fall in the selected range "
+            f"({page_start}–{page_end}) and will be scored next."
+        )
 
         if not clauses_in_scope:
             status.update(label="No clauses in selected page range", state="error")
-            st.error("No clauses found in the selected page range. "
-                     "Try a wider range or a different document.")
+            if not clauses:
+                st.error(
+                    "Parsing produced **zero clauses** from any document. "
+                    "Possible causes: (a) all uploaded PDFs are scanned/image "
+                    "only and the OCR quota is exhausted; (b) PDFs are "
+                    "encrypted; (c) PDFs have no extractable text on the "
+                    "selected pages. Check the parse logs above."
+                )
+            elif not clauses_for_doc:
+                # User picked a doc whose clauses didn't survive the parser
+                docs_with_clauses = sorted({c.get("doc_id", "?") for c in clauses})
+                st.error(
+                    f"No clauses parsed from **{selected_doc}** specifically. "
+                    f"Documents that DID produce clauses: {docs_with_clauses}. "
+                    "Pick one of those from the Document selector above."
+                )
+            else:
+                # Doc has clauses, but none on the selected pages
+                pages_with_clauses = sorted({c.get("page", 0) for c in clauses_for_doc})
+                st.error(
+                    f"`{selected_doc}` has clauses on pages "
+                    f"**{pages_with_clauses}**, but none in the selected range "
+                    f"({page_start}–{page_end}). Adjust the page range to "
+                    f"include one of the pages above."
+                )
             return None
 
         # ─── Filter clauses.jsonl to selected scope (Stages 1+ read it) ─

@@ -274,6 +274,53 @@ class FallbackLLMClient:
         return text, stats
 
     # ──────────────────────────────────────────────────────────────────────
+    # vision_extract(): Gemini-only Vision OCR with key fallover.
+    # Used by the PDF parser when Tesseract isn't on PATH.
+    # ──────────────────────────────────────────────────────────────────────
+    def vision_extract(
+        self,
+        image_bytes: bytes,
+        prompt: str,
+        *,
+        mime_type: str = "image/jpeg",
+        model: Optional[str] = None,
+    ) -> Optional[str]:
+        """Extract text from an image with Gemini Vision. Tries primary key,
+        falls over to secondary on quota errors. Returns the extracted text,
+        or None if both keys are exhausted/unavailable."""
+        from google.genai import types as gtypes
+
+        last_exc: Optional[Exception] = None
+        for name, client in [
+            ("gemini-primary", self._gemini_primary),
+            ("gemini-fallback", self._gemini_fallback),
+        ]:
+            if client is None or _is_cooled_down(name):
+                continue
+            try:
+                model_used = model or client.default_flash
+                resp = client._client.models.generate_content(
+                    model=model_used,
+                    contents=[
+                        gtypes.Part.from_bytes(data=image_bytes, mime_type=mime_type),
+                        prompt,
+                    ],
+                )
+                return (resp.text or "").strip() or None
+            except Exception as e:
+                last_exc = e
+                if _is_quota_error(e):
+                    _trip_cooldown(name)
+                    continue
+                logger.warning("Vision OCR via %s failed (non-quota): %s", name, e)
+                # Non-quota errors are not retried on the next backend
+                return None
+
+        if last_exc is not None:
+            logger.warning("Vision OCR exhausted all backends: %s", last_exc)
+        return None
+
+    # ──────────────────────────────────────────────────────────────────────
     # embed(): Gemini-only fallback chain (Groq has no embed API)
     # ──────────────────────────────────────────────────────────────────────
     def embed(

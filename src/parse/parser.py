@@ -162,22 +162,45 @@ def _ocr_via_gemini(page) -> Optional[str]:
         logger.warning("Page-render to JPEG failed for page %d: %s", page.number + 1, e)
         return None
 
-    try:
-        from google import genai
-        from google.genai import types as gtypes
+    prompt = (
+        "Extract all text from this PDF page exactly as it appears, "
+        "preserving line breaks and clause numbering. Do not paraphrase "
+        "or summarise. If the page has no text, respond with the empty string."
+    )
 
+    # Use the fallback client when configured, so Vision OCR fails over
+    # from the primary Gemini key to the secondary on quota exhaustion.
+    try:
         from src.llm.gemini_client import get_default_client
         client = get_default_client()
-        model = client.default_flash
+    except Exception as e:
+        logger.warning("Could not init LLM client for Vision OCR: %s", e)
+        return None
 
+    # Multi-backend wrapper has a dedicated vision_extract method
+    if hasattr(client, "vision_extract"):
+        try:
+            text = client.vision_extract(jpeg_bytes, prompt, mime_type="image/jpeg")
+            if text:
+                logger.info(
+                    "Gemini Vision OCR'd page %d (%d chars).",
+                    page.number + 1, len(text),
+                )
+            return text or None
+        except Exception as e:
+            logger.warning(
+                "Vision OCR failed for page %d: %s", page.number + 1, e,
+            )
+            return None
+
+    # Plain GeminiClient fallback
+    try:
+        from google.genai import types as gtypes
         resp = client._client.models.generate_content(
-            model=model,
+            model=client.default_flash,
             contents=[
                 gtypes.Part.from_bytes(data=jpeg_bytes, mime_type="image/jpeg"),
-                "Extract all text from this PDF page exactly as it appears, "
-                "preserving line breaks and clause numbering. Do not "
-                "paraphrase or summarise. If the page has no text, "
-                "respond with the empty string.",
+                prompt,
             ],
         )
         text = (resp.text or "").strip()
